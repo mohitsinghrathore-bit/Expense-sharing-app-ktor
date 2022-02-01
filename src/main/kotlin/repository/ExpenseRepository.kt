@@ -1,0 +1,17 @@
+package repository
+
+import entities.AuditTable
+import entities.InputDraft.TransactionDraft
+import entities.InputDraft.UserDraft
+import entities.User
+import org.ktorm.database.Database
+
+interface ExpenseRepository {
+    fun getalluser():List<User>
+
+    fun adduser(draft: UserDraft):User
+
+    fun addTransaction(draft: TransactionDraft):Boolean
+
+    fun balanceAtUserlevel(id:Int):List<AuditTable>
+}
