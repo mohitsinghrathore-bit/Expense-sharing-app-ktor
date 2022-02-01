@@ -1,8 +1,11 @@
 package database
 
 import database.group.GroupUserdbtable
+import database.group.GroupdbTable
 import database.user.AuditDbTable
 import database.user.Dbauditentitiy
+import entities.Group
+import entities.InputDraft.GroupDraft
 import entities.InputDraft.TransactionDraft
 import entities.InputDraft.UserDraft
 import entities.User
@@ -85,6 +88,12 @@ class DatabaseManager {
         val groupuser=groupuserTable.filter { it.idGroup eq id }.map { it.idUser }
         val aud=auditatble.filter { it.idUser1 inList    groupuser }.filter { it.idUser2 inList groupuser }
         return aud
+    }
+    fun addgroup(draft:GroupDraft): Group {
+        val insertid=ktormDatabase.insertAndGenerateKey(GroupdbTable){
+            set(GroupdbTable.name,draft.name)
+        }as Int
+        return Group(insertid,draft.name)
     }
 
 

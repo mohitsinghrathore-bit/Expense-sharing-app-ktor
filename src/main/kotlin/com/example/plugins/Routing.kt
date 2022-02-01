@@ -37,5 +37,8 @@ fun Application.configureRouting() {
         get("/grp/{id}"){
             Controller.balanceAtGroupLevel(call)
         }
+        post("/grp"){
+            Controller.addgroup(call)
+        }
     }
 }

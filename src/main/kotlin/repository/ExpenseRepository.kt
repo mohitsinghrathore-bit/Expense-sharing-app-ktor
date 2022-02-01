@@ -1,6 +1,8 @@
 package repository
 
 import entities.AuditTable
+import entities.Group
+import entities.InputDraft.GroupDraft
 import entities.InputDraft.TransactionDraft
 import entities.InputDraft.UserDraft
 import entities.User
@@ -16,4 +18,6 @@ interface ExpenseRepository {
     fun balanceAtUserlevel(id:Int):List<AuditTable>
 
     fun balanceAtGrouplevel(id:Int):List<AuditTable>
+
+    fun addgroup(draft: GroupDraft):Group
 }

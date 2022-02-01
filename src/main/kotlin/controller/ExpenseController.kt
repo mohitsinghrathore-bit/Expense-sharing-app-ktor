@@ -1,5 +1,6 @@
 package controller
 
+import entities.InputDraft.GroupDraft
 import entities.InputDraft.TransactionDraft
 import entities.InputDraft.UserDraft
 import io.ktor.http.*
@@ -41,5 +42,9 @@ class ExpenseController(val Repos:ExpenseRepository) {
                   return
             }
             call.respond(Repos.balanceAtGrouplevel(id))
+      }
+      suspend fun addgroup(call: ApplicationCall){
+            val draft=call.receive<GroupDraft>()
+            call.respond(Repos.addgroup(draft))
       }
 }

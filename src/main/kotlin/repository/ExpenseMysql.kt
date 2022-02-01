@@ -2,6 +2,8 @@ package repository
 
 import database.DatabaseManager
 import entities.AuditTable
+import entities.Group
+import entities.InputDraft.GroupDraft
 import entities.InputDraft.TransactionDraft
 import entities.InputDraft.UserDraft
 import entities.User
@@ -29,6 +31,10 @@ class ExpenseMysql: ExpenseRepository {
 
     override fun balanceAtGrouplevel(id: Int): List<AuditTable> {
         return Database.balanceAtGrouplevel(id).map { AuditTable(it.idUser1,it.idUser2,it.Amount) }
+    }
+
+    override fun addgroup(draft: GroupDraft): Group {
+        return Database.addgroup(draft)
     }
 
 
