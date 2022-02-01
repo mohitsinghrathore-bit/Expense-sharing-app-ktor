@@ -27,5 +27,9 @@ class ExpenseMysql: ExpenseRepository {
        return  Database.balanceAtUserlevel(id).map { AuditTable(it.idUser1,it.idUser2,it.Amount) }
     }
 
+    override fun balanceAtGrouplevel(id: Int): List<AuditTable> {
+        return Database.balanceAtGrouplevel(id).map { AuditTable(it.idUser1,it.idUser2,it.Amount) }
+    }
+
 
 }

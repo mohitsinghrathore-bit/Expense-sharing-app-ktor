@@ -79,13 +79,13 @@ class DatabaseManager {
         val aud=auditatble.filter { it.idUser1 eq  id}
         return aud
     }
-//    fun balanceAtGrouplevel(id:Int): EntitySequence<Dbauditentitiy, AuditDbTable> {
-//        val auditatble=ktormDatabase.sequenceOf(AuditDbTable)
-//        val groupuserTable=ktormDatabase.sequenceOf(GroupUserdbtable)
-//        val groupuser=groupuserTable.filter { it.idGroup eq id }.map { it.idUser }
-//        val aud=auditatble.filter { it.idUser1 inList    groupuser }.filter { it.idUser2 inList groupuser }
-//        return aud
-//    }
+    fun balanceAtGrouplevel(id:Int): EntitySequence<Dbauditentitiy, AuditDbTable> {
+        val auditatble=ktormDatabase.sequenceOf(AuditDbTable)
+        val groupuserTable=ktormDatabase.sequenceOf(GroupUserdbtable)
+        val groupuser=groupuserTable.filter { it.idGroup eq id }.map { it.idUser }
+        val aud=auditatble.filter { it.idUser1 inList    groupuser }.filter { it.idUser2 inList groupuser }
+        return aud
+    }
 
 
 }

@@ -34,4 +34,12 @@ class ExpenseController(val Repos:ExpenseRepository) {
             }
             call.respond(Repos.balanceAtUserlevel(id))
       }
+      suspend fun balanceAtGroupLevel(call: ApplicationCall){
+            val id = call.parameters["id"]?.toIntOrNull()
+            if(id==null){
+                  call.respond(HttpStatusCode.BadRequest)
+                  return
+            }
+            call.respond(Repos.balanceAtGrouplevel(id))
+      }
 }

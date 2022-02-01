@@ -35,7 +35,7 @@ fun Application.configureRouting() {
             Controller.balanceAtUserlevel(call)
         }
         get("/grp/{id}"){
-            Controller.balanceAtUserlevel(call)
+            Controller.balanceAtGroupLevel(call)
         }
     }
 }

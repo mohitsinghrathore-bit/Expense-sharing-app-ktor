@@ -14,4 +14,6 @@ interface ExpenseRepository {
     fun addTransaction(draft: TransactionDraft):Boolean
 
     fun balanceAtUserlevel(id:Int):List<AuditTable>
+
+    fun balanceAtGrouplevel(id:Int):List<AuditTable>
 }
