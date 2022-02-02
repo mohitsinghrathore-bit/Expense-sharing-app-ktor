@@ -8,7 +8,6 @@ import io.ktor.serialization.gson.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.response.*
-import io.ktor.server.request.*
 
 fun Application.configureRouting() {
     install(ContentNegotiation) {
@@ -18,27 +17,27 @@ fun Application.configureRouting() {
     }
     routing {
         val comp=Component()
-        val Controller=comp.Expensecontroller
+        val controller=comp.Expensecontroller
         get("/") {
             call.respondText("Hello World!")
         }
         get("/user"){
-            Controller.getalluser(call)
+            controller.getalluser(call)
         }
         post("/user"){
-            Controller.adduser(call)
+            controller.adduser(call)
         }
         put("/txn"){
-            Controller.addTransaction(call)
+            controller.addTransaction(call)
         }
         get("/user/{id}"){
-            Controller.balanceAtUserlevel(call)
+            controller.balanceAtUserlevel(call)
         }
         get("/grp/{id}"){
-            Controller.balanceAtGroupLevel(call)
+            controller.balanceAtGroupLevel(call)
         }
         post("/grp"){
-            Controller.addgroup(call)
+            controller.addgroup(call)
         }
     }
 }
